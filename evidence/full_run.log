@@ -1,0 +1,108 @@
+Assuming unrestricted shared filesystem usage.
+Falling back to greedy scheduler because no ILP solver is found (you have to install pulp and either coincbc or glpk).
+
+SNAKEMAKE
+=========
+  Date: 2026-11-10 18:25:53
+  Workflow ID: 057abfed-0b55-4775-835e-a02de74e86e5
+  Platform: macOS-15.7.9-x86_64-i386-64bit
+  Host: MacBookPro
+  User: thalie
+  Snakemake version: 9.27.1
+  Python version: 3.12.16 (main, Oct 26 2026, 11:52:02) [Clang 21.1.8 ]
+  Command: .lab5-env/bin/snakemake --cores 2 --printshellcmds --shared-fs-usage input-output persistence software-deployment software-deployment-cache sources storage-local-copies
+  Snakefile: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/Snakefile
+  Base directory: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854
+  Run directory: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854
+  Working directory: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                       count
+----------------------  -------
+clean_samples                 1
+query_patient_features        1
+merge_analytic_tables         1
+summary_report                1
+all                           1
+total                         5
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Tue Nov 10 18:26:11 2026]
+localrule clean_samples:
+    input: data/raw/messy_samples.csv, scripts/clean_samples.py
+    output: results/clean_samples.csv
+    jobid: 2
+    reason: Missing output files: results/clean_samples.csv; Code has changed since last execution; Params have changed since last execution: Union of exclusive params before and now across all output: before: <nothing exclusive> now: '/Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/.lab5-env/bin/python3.12' 
+    resources: tmpdir=/var/folders/5m/55mvff8x263f_3chgqrntc6c0000gn/T
+Shell command: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/.lab5-env/bin/python3.12 scripts/clean_samples.py --input data/raw/messy_samples.csv --output results/clean_samples.csv
+
+[Tue Nov 10 18:26:11 2026]
+localrule query_patient_features:
+    input: data/raw/lab4-cbioportal-luad/cohort.db, sql/gene_counts.sql, scripts/query_patient_features.py
+    output: results/patient_features.csv
+    jobid: 3
+    reason: Missing output files: results/patient_features.csv; Code has changed since last execution; Params have changed since last execution: Union of exclusive params before and now across all output: before: <nothing exclusive> now: '/Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/.lab5-env/bin/python3.12' 
+    resources: tmpdir=/var/folders/5m/55mvff8x263f_3chgqrntc6c0000gn/T
+Shell command: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/.lab5-env/bin/python3.12 scripts/query_patient_features.py --database data/raw/lab4-cbioportal-luad/cohort.db --gene-query sql/gene_counts.sql --output results/patient_features.csv
+Cleaned 60 samples -> results/clean_samples.csv
+[Tue Nov 10 18:26:11 2026]
+Finished jobid: 2 (Rule: clean_samples)
+1 of 5 steps (20%) done
+Queried 566 patients -> results/patient_features.csv
+[Tue Nov 10 18:26:13 2026]
+Finished jobid: 3 (Rule: query_patient_features)
+2 of 5 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 10 18:26:13 2026]
+localrule merge_analytic_tables:
+    input: results/clean_samples.csv, results/patient_features.csv, scripts/merge_tables.py
+    output: results/combined_analytic_table.csv
+    jobid: 1
+    reason: Missing output files: results/combined_analytic_table.csv; Input files updated by another job: results/clean_samples.csv, results/patient_features.csv
+    resources: tmpdir=/var/folders/5m/55mvff8x263f_3chgqrntc6c0000gn/T
+Shell command: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/.lab5-env/bin/python3.12 scripts/merge_tables.py --samples results/clean_samples.csv --patients results/patient_features.csv --output results/combined_analytic_table.csv
+Merged 60 samples with context from 566 patients
+Wrote results/combined_analytic_table.csv
+[Tue Nov 10 18:26:14 2026]
+Finished jobid: 1 (Rule: merge_analytic_tables)
+3 of 5 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 10 18:26:14 2026]
+localrule summary_report:
+    input: results/combined_analytic_table.csv, scripts/make_report.py
+    output: report/summary.md, report/glucose_by_site.svg
+    jobid: 4
+    reason: Missing output files: report/glucose_by_site.svg, report/summary.md; Input files updated by another job: results/combined_analytic_table.csv
+    resources: tmpdir=/var/folders/5m/55mvff8x263f_3chgqrntc6c0000gn/T
+Shell command: /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/.lab5-env/bin/python3.12 scripts/make_report.py --input results/combined_analytic_table.csv --report report/summary.md --figure report/glucose_by_site.svg
+Wrote report report/summary.md and figure report/glucose_by_site.svg
+[Tue Nov 10 18:26:15 2026]
+Finished jobid: 4 (Rule: summary_report)
+4 of 5 steps (80%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 10 18:26:15 2026]
+localrule all:
+    input: results/combined_analytic_table.csv, report/summary.md, report/glucose_by_site.svg
+    jobid: 0
+    reason: Input files updated by another job: report/summary.md, report/glucose_by_site.svg, results/combined_analytic_table.csv
+    resources: tmpdir=/var/folders/5m/55mvff8x263f_3chgqrntc6c0000gn/T
+Shell command: None
+[Tue Nov 10 18:26:15 2026]
+Finished jobid: 0 (Rule: all)
+5 of 5 steps (100%) done
+Complete log(s): /Users/thalie/Desktop/DevTools/Lab-5-PUBH6854/.snakemake/log/2026-11-10T182553.758137.snakemake.log
+Elapsed time: 0:00:22.003542

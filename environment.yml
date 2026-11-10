@@ -1,0 +1,10 @@
+name: pubh6854-lab5
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - python=3.12
+  - pandas
+  - snakemake-minimal

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#24292f}.title{font-size:22px;font-weight:700}.axis{font-size:13px}.value{font-size:13px;font-weight:700}</style>
+<text x="360" y="28" text-anchor="middle" class="title">Mean glucose by enrollment site</text>
+<line x1="90" y1="45" x2="90" y2="345" stroke="#57606a"/>
+<line x1="90" y1="345" x2="660" y2="345" stroke="#57606a"/>
+<line x1="85" y1="345.0" x2="660" y2="345.0" stroke="#d8dee4"/>
+<text x="80" y="350.0" text-anchor="end" class="axis">0</text>
+<line x1="85" y1="195.9" x2="660" y2="195.9" stroke="#d8dee4"/>
+<text x="80" y="200.9" text-anchor="end" class="axis">500</text>
+<line x1="85" y1="46.9" x2="660" y2="46.9" stroke="#d8dee4"/>
+<text x="80" y="51.9" text-anchor="end" class="axis">1000</text>
+<rect x="157.5" y="291.1" width="100" height="53.9" rx="4" fill="#2f81f7"/>
+<text x="207.5" y="283.1" text-anchor="middle" class="value">180.7</text>
+<text x="207.5" y="369" text-anchor="middle" class="axis">Site A</text>
+<text x="207.5" y="388" text-anchor="middle" class="axis">n=19</text>
+<rect x="325.0" y="45.0" width="100" height="300.0" rx="4" fill="#3fb950"/>
+<text x="375.0" y="37.0" text-anchor="middle" class="value">1006.3</text>
+<text x="375.0" y="369" text-anchor="middle" class="axis">Site B</text>
+<text x="375.0" y="388" text-anchor="middle" class="axis">n=19</text>
+<rect x="492.5" y="97.9" width="100" height="247.1" rx="4" fill="#d29922"/>
+<text x="542.5" y="89.9" text-anchor="middle" class="value">828.9</text>
+<text x="542.5" y="369" text-anchor="middle" class="axis">Site C</text>
+<text x="542.5" y="388" text-anchor="middle" class="axis">n=20</text>
+<text transform="translate(22 240) rotate(-90)" text-anchor="middle" class="axis">Glucose (mg/dL)</text>
+</svg>

@@ -1,0 +1,6 @@
+.DS_Store
+.lab5-env/
+.snakemake/
+.cache/
+__pycache__/
+*.py[cod]
