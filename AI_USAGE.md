@@ -2,9 +2,7 @@
 
 ## Tool used
 
-I used OpenAI Codex, a coding agent in the Codex desktop app, on November 10,
-2026. I used it interactively while adapting my Lab 3 and Lab 4 work into a
-Snakemake workflow.
+I used OpenAI Codex in the Codex desktop app with the GPT-5.6 Sol model, on November 10, 2026. I used it interactively while adapting my Lab 3 and Lab 4 work into a Snakemake workflow.
 
 ## Assistance received
 
