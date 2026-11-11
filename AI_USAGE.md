@@ -36,3 +36,5 @@ I also checked that the final outputs contain 60 unique sample rows, the
 intermediate patient table contains 566 unique patient rows, and the report
 describes the lack of patient-level linkage rather than presenting the two
 datasets as matched.
+
+After completing the lab, I asked Codex to create a review quiz covering what I had done so I could check my understanding.
